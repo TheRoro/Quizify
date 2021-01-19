@@ -17,5 +17,37 @@
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <script src="https://sdk.scdn.co/spotify-player.js"></script>
+    <script>
+      window.onSpotifyWebPlaybackSDKReady = () => {
+        const token = 'BQAMIULpnP2jZUtH-d2KgxE0v9pKOfisUYVZVuMprFFjBaRbCfPlpCaGh9KPrKc8cDg7ZeMuD2N3eVxkKYu_Rz4LDOlLk1lA6H53Npmz2hLS0lRmw95GtcEnR1kBIUnUYZCUbE4D894SlFUvs8uY0cDpAT-SdY0vI8xr9R5bx6boXlB_zT71AHzzKFRiocTjrRVQlRAiZ3zF-XdD8x3vgCU6NUS2m7UIqSPW2qnv8uo6Naz1ji9beghDQp9qSbkRvLAifPpaT5jcXXFRR9-YnXoYg9MwjU1ysH7nCP8';
+        const player = new Spotify.Player({
+          name: 'Web Playback SDK Quick Start Player',
+          getOAuthToken: cb => { cb(token); }
+        });
+
+        // Error handling
+        player.addListener('initialization_error', ({ message }) => { console.error(message); });
+        player.addListener('authentication_error', ({ message }) => { console.error(message); });
+        player.addListener('account_error', ({ message }) => { console.error(message); });
+        player.addListener('playback_error', ({ message }) => { console.error(message); });
+
+        // Playback status updates
+        player.addListener('player_state_changed', state => { console.log(state); });
+
+        // Ready
+        player.addListener('ready', ({ device_id }) => {
+          console.log('Ready with Device ID', device_id);
+        });
+
+        // Not Ready
+        player.addListener('not_ready', ({ device_id }) => {
+          console.log('Device ID has gone offline', device_id);
+        });
+
+        // Connect to the player!
+        player.connect();
+        console.log("ready set go!!");
+      };
+      </script>
   </body>
 </html>

@@ -1,71 +1,54 @@
+import React from 'react';
+import currentSong from '../../API/currentSong';
+import playSong from '../../API/playSong';
+import nextSong from '../../API/nextSong';
+import favoriteSongs from '../../API/favoriteSongs';
+import getArtist from '../../API/getArtist';
+
 const Quiz = (props) => {
-    const backgroundStyles = {
-        backgroundImage:`url(${props.item.album.images[0].url})`,
-    };
-      
-    const progressBarStyles = {
-    width: (props.progress_ms * 100 / props.item.duration_ms) + '%'
-    };
-    // window.onSpotifyWebPlaybackSDKReady = () => {
-    //     var player = new Spotify.Player({
-    //       name: 'Quizify Player',
-    //       getOAuthToken: callback => {
-    //         callback('BQBXDkA1RSCorqy--P62NwSfuyJmEpxAYXRmpYS5K4J9WiTMccJVMfOXkgX_E00iwXzpfZEfNBKmE9vhKwB4L48dPR4-02KlvMdXzlJ5ldf5a3GWJ4Q6EwyJ-NlLedP0JZFVHL3zbFSVUGNfVuV6KvkQEDZeFu4A3Mb2K8HG1ipDOIbpjGsdv1o');
-    //       },
-    //       volume: 0.5
-    //     });
-    //     player.connect().then(success => {
-    //       if (success) {
-    //         console.log('The Web Playback SDK successfully connected to Spotify!');
-    //       }
-    //     })
-    //     player.addListener('ready', ({ device_id }) => {
-    //     console.log('The Web Playback SDK is ready to play music!');
-    //     console.log('Device ID', device_id);
-    //     })
-    //     player.togglePlay().then(() => {
-    //       console.log('Toggled playback!');
-    //     });
-    //     player.nextTrack().then(() => {
-    //       console.log('Skipped to next track!');
-    //     });
-    //     player.addListener('player_state_changed', ({
-    //       position,
-    //       duration,
-    //       track_window: { current_track }
-    //     }) => {
-    //       console.log('Currently Playing', current_track);
-    //       console.log('Position in Song', position);
-    //       console.log('Duration of Song', duration);
-    //     }); 
-    // }
+    const [token, setToken] = React.useState('BQCAG1vMZ8OfgBDpGEZGUCex4_M21b4oxvDkEg3PfXvLnMcYF6cJaxZ711fVJstg4lXh7eVGykgo508mUbereBa5t-TUlpvLeOCeXJUhvkSO9GVglU8CfUxZqD93vSvEdm2tvH6z2SQEC8mo-RB1i946l09S9Uk0qLk7BfXOl2sn0gQtCScDXN7K3eDapGPwzUFhOKLvFX2tevkIXigC_v-2vJaenXgLKhMP2VyrQvuN1C24KMmyv9YXQuCZVMW6FHOkeuUvu_mxhQDdC5Y7t8I2NjnEtuPq0NaUxCY');
+    const [songId, setSongId] = React.useState()
+    const [current, setCurrent] = React.useState();
+    const [favorites, setFavorites] = React.useState();
+    const [artistId, setArtistId] = React.useState();
+
+    const onClickCurrentSong = async () => {
+        const resp = await currentSong(token);
+        setCurrent(resp);
+    }
+    
+    const onClickPlaySong = () => {
+        playSong(token);
+    }
+
+    const onClickNextSong = async () => {
+        const ready = await nextSong(token);
+        const resp = await currentSong(token);
+        setCurrent(resp);
+    }
+
+    const onClickFavoriteSongs = async () => {
+        const resp = await favoriteSongs(token);
+        setFavorites(resp);
+    }
+ 
     return(
         <>
             <div>
                 <h1>Quizify</h1>
-                <div className="App">
-                    <div className="main-wrapper">
-                        <div className="now-playing__img">
-                        <img src={props.item.album.images[0].url} />
-                        </div>
-                        <div className="now-playing__side">
-                        <div className="now-playing__name">{props.item.name}</div>
-                        <div className="now-playing__artist">
-                            {props.item.artists[0].name}
-                        </div>
-                        <div className="now-playing__status">
-                            {props.is_playing ? "Playing" : "Paused"}
-                        </div>
-                        <div className="progress">
-                            <div
-                            className="progress__bar"
-                            style={progressBarStyles}
-                            />
-                        </div>
-                        </div>
-                        <div className="background" style={backgroundStyles} />{" "}
-                    </div>
-                    </div>
+                <h2>{current?.item.name}</h2>
+                <h3>{current?.item.album.name}</h3>
+                {current?.item.artists.map((item, index) => 
+                    <p key={index}>{item.name}</p>
+                )}
+                {/* <p>{token}</p> */}
+                <button onClick={() => onClickPlaySong()}>Play Random Song!</button>
+                <button onClick={() => onClickNextSong()}>Next Song</button>
+                <button onClick={() => onClickCurrentSong()}>Get current song</button>
+                <button onClick={() => onClickFavoriteSongs()}>Get Saved songs!</button>
+                {favorites?.items.map((item, index) => 
+                    <p key={index}>{item.track.name}</p>
+                )} 
             </div>
         </>
     );

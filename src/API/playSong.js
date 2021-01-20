@@ -6,6 +6,7 @@ const playSong = async (token, uri, track_number) => {
         "offset": {
             "position": track_number
         },
+        "position_ms": 45000
     }
     const header = {   
         headers: {

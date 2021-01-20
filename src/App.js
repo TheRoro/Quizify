@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import QuizNew from './components/quiz/QuizNew';
+import ArtistQuiz from './components/quiz/ArtistQuiz';
 
 class App extends Component {
   componentDidMount() {
@@ -20,7 +20,7 @@ class App extends Component {
   render(){
     return (
       <div className="App">
-        <QuizNew/>
+        <ArtistQuiz/>
       </div>
     );
   }

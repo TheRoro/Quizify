@@ -1,4 +1,5 @@
 import React from 'react';
+import OAuthToken from '../../assets/token';
 import currentSong from '../../API/currentSong';
 import playSong from '../../API/playSong';
 import nextSong from '../../API/nextSong';
@@ -6,10 +7,11 @@ import getArtist from '../../API/getArtist';
 import getTopTraks from '../../API/getTopTracks';
 import searchArtist from '../../API/searchArtist';
 
-const Quiz = (props) => {
-    const [token, setToken] = React.useState('BQAMIULpnP2jZUtH-d2KgxE0v9pKOfisUYVZVuMprFFjBaRbCfPlpCaGh9KPrKc8cDg7ZeMuD2N3eVxkKYu_Rz4LDOlLk1lA6H53Npmz2hLS0lRmw95GtcEnR1kBIUnUYZCUbE4D894SlFUvs8uY0cDpAT-SdY0vI8xr9R5bx6boXlB_zT71AHzzKFRiocTjrRVQlRAiZ3zF-XdD8x3vgCU6NUS2m7UIqSPW2qnv8uo6Naz1ji9beghDQp9qSbkRvLAifPpaT5jcXXFRR9-YnXoYg9MwjU1ysH7nCP8');
-    const [artistId, setArtistId] = React.useState(); //'66CXWjxzNUsdJxJ2JdwvnR' artist id
-    const [artist, setArtist] = React.useState(); //Artist Response from artistId
+const ArtistQuiz = (props) => {
+    const [token, setToken] = React.useState(OAuthToken);
+    const [score, setScore] = React.useState(0);
+    const [artistId, setArtistId] = React.useState();
+    const [artist, setArtist] = React.useState();
     const [names, setNames] = React.useState();
     const [rightAnswer, setRightAnswer] = React.useState();
     const [userInput, setUserInput] = React.useState();
@@ -58,11 +60,9 @@ const Quiz = (props) => {
 
     const validateAnswer = (item) => {
         if(item === rightAnswer){
-            alert('BIEEEEN');
+            setScore(score + 1);
         }
-        else {
-            alert("MONGOL");
-        }
+        onClickStartGame();
     }
 
     const onClickCurrentSong = async () => {
@@ -82,6 +82,7 @@ const Quiz = (props) => {
         <>
             <div>
                 <h1>Quizify</h1>
+                <h3>My Score: {score}</h3>
                 <input type="text" value={userInput} onChange={handleChange} />
                 <button onClick={() => onClickSearchArtist()}>SEARCH ARTIST</button>
                 <h2>Artist: {artist?.name}</h2>
@@ -95,4 +96,4 @@ const Quiz = (props) => {
     );
 }
 
-export default Quiz;
+export default ArtistQuiz;

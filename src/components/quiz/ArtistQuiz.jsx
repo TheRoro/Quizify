@@ -64,19 +64,6 @@ const ArtistQuiz = (props) => {
         }
         onClickStartGame();
     }
-
-    const onClickCurrentSong = async () => {
-        const resp = await currentSong(token);
-    }
-    
-    const onClickPlaySong = () => {
-        playSong(token);
-    }
-
-    const onClickNextSong = async () => {
-        const ready = await nextSong(token);
-        const resp = await currentSong(token);
-    }
  
     return(
         <>

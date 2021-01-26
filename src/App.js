@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Home from "./components/home/home";
 import ArtistQuiz from './components/quiz/ArtistQuiz';
 
 class App extends Component {
@@ -19,9 +20,10 @@ class App extends Component {
 
   render(){
     return (
-      <div className="App">
-        <ArtistQuiz/>
-      </div>
+      <>
+        <Home/>
+        {/* <ArtistQuiz/> */}
+      </>
     );
   }
 }

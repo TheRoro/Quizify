@@ -1,0 +1,71 @@
+@import '../../assets/colors.scss';
+
+// Layout
+
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    //align-items: stretch;
+    justify-content: center;
+    height: 100%;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.select-row {
+    margin-top: 4em;
+}
+
+.mode-row {
+    margin-top: .2em;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.mode {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    align-items: center;  
+}
+
+.mode-img {
+    max-width: 100%;
+}
+
+@media (max-width: 550px) {
+    .home-container {
+        height: auto;
+    }
+    .title-row {
+        margin-top: 3em;
+    }
+    .mode-row {
+        flex-direction: column;
+    }
+    .mode {
+        flex-direction: column;
+        width: 100%; 
+    }
+    .mode-img {
+        max-width: 80%;
+    }
+}
+
+/* Typography */
+
+.title {
+    font-size: 2.5rem;
+    color: $green;
+}
+
+.select-text {
+    font-size: 1.5rem;
+    color: $white;
+}
+
+.mode-text {
+    color: $white;
+}

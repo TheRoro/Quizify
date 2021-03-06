@@ -1,16 +1,16 @@
 @import './assets/colors.scss';
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  border-radius: 10px;
+  border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb {
   background: $green;
-  border-radius: 10px;
+  border-radius: 2px;
 }
 
 * {

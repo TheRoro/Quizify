@@ -8,14 +8,17 @@ export const SidebarMenu = [
   },
   {
     title: "Lorem Ipsum",
+    path: "/",
     cName: "menu-item",
   },
   {
     title: "Lorem Ipsum",
+    path: "/",
     cName: "menu-item",
   },
   {
     title: "Copyright",
+    path: "/",
     cName: "copyright",
   },
 ];

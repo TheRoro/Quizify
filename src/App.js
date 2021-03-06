@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Home from "./components/home/home";
-import ArtistQuiz from "./components/quiz/ArtistQuiz";
+import SearchArtist from "./components/search/searchArtist";
 import Sidebar from "./components/sidebar/sidebar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -24,15 +24,11 @@ class App extends Component {
   render() {
     return (
       <>
-        <Home />
-        <Router>
-          <Sidebar>
-            <Switch>
-              <Route path="/" />
-              {/* <ArtistQuiz/> */}
-            </Switch>
-          </Sidebar>
-        </Router>
+        <Sidebar/>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/searchArtist" component={SearchArtist} />
+        </Switch>
       </>
     );
   }

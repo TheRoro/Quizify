@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: row;
   padding-bottom: 1rem;
-  width: 50%;
+  width: 80%;
 }
 
 .more-margin {
@@ -20,10 +20,37 @@
 .mode-static {
   display: flex;
   flex-direction: column;
-  width: 30%;
+  width: fit-content;
   align-items: center;
+  margin-bottom: 2.5rem;
 }
 
 .mt-text {
   margin-top: 10px;
+}
+
+@media (max-width: 660px) {
+  .home-container {
+    height: auto;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .title-row {
+    height: 10vh;
+    margin-top: 3em;
+  }
+  .select-row {
+    height: 10vh;
+  }
+  .mode-space {
+    height: auto;
+    flex-direction: column;
+  }
+  .mode-static {
+    flex-direction: column;
+    width: 100%;
+  }
+  .mode-img {
+    max-width: 80%;
+  }
 }

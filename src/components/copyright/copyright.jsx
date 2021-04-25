@@ -13,7 +13,7 @@ const Copyright = () => {
                 </div>
                 <div className="mode-space">
                     <div className="mode-static">
-                        <a href="</a>">
+                        <a href="https://rodrigoramirez.dev">
                             <img className="mode-img rounded" src={Rodrigo} alt="roro"/>
                         </a>
                             <p className="mode-text mt-text">Rodrigo Ramirez</p>

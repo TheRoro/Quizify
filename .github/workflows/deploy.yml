@@ -1,0 +1,11 @@
+name: Secrets example
+on: push
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test
+        run: |
+          echo $
+        env:
+          REACT_APP_CLIENT_ID: ${{ secrets.CLIENT_ID }}

@@ -18,3 +18,9 @@
   text-transform: uppercase;
   font-weight: 600;
 }
+
+@media (max-width: 660px) {
+  .title-row {
+    margin-top: 0rem !important;
+  }
+}

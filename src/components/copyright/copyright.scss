@@ -37,7 +37,10 @@
   }
   .title-row {
     height: 10vh;
-    margin-top: 3em;
+    margin-top: 2.2rem;
+    .title {
+      font-size: 2rem;
+    }
   }
   .select-row {
     height: 10vh;
@@ -51,6 +54,6 @@
     width: 100%;
   }
   .mode-img {
-    max-width: 80%;
+    max-width: 70%;
   }
 }

@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import Home from "./components/home/home";
 import SearchArtist from "./components/search/searchArtist";
 import Sidebar from "./components/sidebar/sidebar";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Login from "./components/login/login.jsx";
+import Copyright from "./components/copyright/copyright.jsx"
+import {Switch, Route } from "react-router-dom";
 
 class App extends Component {
   componentDidMount() {
@@ -26,8 +28,10 @@ class App extends Component {
       <>
         <Sidebar/>
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" component={Login}/>
+          <Route path="/home" component={Home} />
           <Route path="/searchArtist" component={SearchArtist} />
+          <Route path="/copyright" component={Copyright} />
         </Switch>
       </>
     );

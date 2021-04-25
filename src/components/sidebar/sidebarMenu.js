@@ -7,8 +7,8 @@ export const SidebarMenu = [
     cName: "quizify-title",
   },
   {
-    title: "Lorem Ipsum",
-    path: "/",
+    title: "Select your play mode",
+    path: "/home",
     cName: "menu-item",
   },
   {
@@ -18,7 +18,7 @@ export const SidebarMenu = [
   },
   {
     title: "Copyright",
-    path: "/",
+    path: "/copyright",
     cName: "copyright",
   },
 ];

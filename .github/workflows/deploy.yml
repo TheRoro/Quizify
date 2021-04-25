@@ -1,11 +1,14 @@
-name: Secrets example
+name: Quizify Deployment
 on: push
 jobs:
-  job1:
+  get_client_id:
     runs-on: ubuntu-latest
     steps:
-      - name: Test
+      - name: GET_CLIENT_ID
         run: |
-          echo $
+          if [ "$REACT_APP_CLIENT_ID" == "7c01106cb38a4ed1bbc9d68c3395b62b" ]
+          then
+            echo "Got CLIENT_ID"
+          fi
         env:
-          REACT_APP_CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          REACT_APP_CLIENT_ID: ${{ secrets.REACT_APP_CLIENT_ID }}

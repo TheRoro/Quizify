@@ -7,7 +7,7 @@ import "./copyright.scss"
 const Copyright = () => {
     return(
         <>
-            <div className="home-container">
+            <div className="home-container home-margin">
                 <div className="title-row more-margin">
                     <h1 className="title">Copyright</h1>
                 </div>

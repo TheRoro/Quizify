@@ -6,9 +6,6 @@ jobs:
     steps:
       - name: GET_CLIENT_ID
         run: |
-          if [ "$REACT_APP_CLIENT_ID" == "7c01106cb38a4ed1bbc9d68c3395b62b" ]
-          then
             echo "Got CLIENT_ID"
-          fi
         env:
           REACT_APP_CLIENT_ID: ${{ secrets.REACT_APP_CLIENT_ID }}

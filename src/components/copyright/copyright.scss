@@ -1,0 +1,29 @@
+.mode-space {
+  justify-content: space-around !important;
+  margin-top: 0.2em;
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 1rem;
+  width: 50%;
+}
+
+.more-margin {
+  margin-bottom: 5%;
+}
+
+// Makes img a circle
+.rounded {
+  border-radius: 50% !important;
+  max-width: 200px !important;
+}
+
+.mode-static {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  align-items: center;
+}
+
+.mt-text {
+  margin-top: 10px;
+}

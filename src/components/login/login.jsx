@@ -1,10 +1,7 @@
 import React, { Component } from "react";
-// import * as $ from "jquery";
 import axios from 'axios';
 import { authEndpoint, clientId, redirectUri, scopes } from "./config";
 import hash from "./hash";
-// import Player from "./Player";
-// import logo from "./logo.svg";
 import "./login.scss";
 import "./../home/home.scss";
 
@@ -90,32 +87,6 @@ class Login extends Component {
           }
         )
   }
-//     $.ajax({
-//       url: "https://api.spotify.com/v1/me/player",
-//       type: "GET",
-//       beforeSend: xhr => {
-//         xhr.setRequestHeader("Authorization", "Bearer " + token);
-//       },
-//       success: data => {
-//         // Checks if the data is not empty
-//         if(!data) {
-//           this.setState({
-//             no_data: true,
-//           });
-//           return;
-//         }
-
-//         this.setState({
-//           item: data.item,
-//           is_playing: data.is_playing,
-//           progress_ms: data.progress_ms,
-//           no_data: false /* We need to "reset" the boolean, in case the
-//                             user does not give F5 and has opened his Spotify. */
-//         });
-//       }
-//     });
-//   }
-
   render() {
     return (
         <div className="container">

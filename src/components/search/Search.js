@@ -1,16 +1,24 @@
 import { useState } from 'react'
 import { useForm } from '../hooks/useForm'
-import { searchTrack } from '../api/searchTrack'
+import { searchTrackByArtist } from '../api/searchTrackByArtist'
+import { getLyricsByTrackId } from '../api/getLyricsByTrackId'
+
+const onClickSearchIcon = async (searchValue, setTracks) => {
+	let response = await searchTrackByArtist(searchValue)
+	setTracks(response.track_list)
+	console.log(response.track_list)
+}
+
+const onClickSong = async (trackId, setLyrics) => {
+	let response = await getLyricsByTrackId(trackId)
+	setLyrics(response.lyrics.lyrics_body)
+	console.log(response.lyrics.lyrics_body)
+}
 
 const Search = () => {
-	const onClickSearchIcon = async (searchValue) => {
-		let response = await searchTrack(searchValue)
-		// console.log(response)
-		setTracks(response.track_list)
-	}
-
 	const [values, handleChange] = useForm({ searchValue: '' })
 	const [tracks, setTracks] = useState()
+	const [lyrics, setLyrics] = useState()
 	return (
 		<div>
 			<div className='container mx-auto'>
@@ -34,7 +42,7 @@ const Search = () => {
 					className=''
 					type='submit'
 					onClick={() => {
-						onClickSearchIcon(values.searchValue)
+						onClickSearchIcon(values.searchValue, setTracks)
 					}}
 				>
 					<svg
@@ -54,13 +62,20 @@ const Search = () => {
 				</button>
 				{tracks &&
 					tracks.map((track, index) => (
-						<div key={index} className='bg-blue-200 mt-3'>
+						<div
+							key={index}
+							className='bg-blue-200 mt-3'
+							onClick={() => {
+								onClickSong(track.track.track_id, setLyrics)
+							}}
+						>
 							{'- '}
 							{track.track.track_name}
 							{' - '}
 							{track.track.artist_name}
 						</div>
 					))}
+				{lyrics && <div>{lyrics}</div>}
 			</div>
 		</div>
 	)
